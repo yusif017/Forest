@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Category>
+
+<div class="table table-bordered ">
+    <div class=" table-bordered  mb-4">
+        <div class="card-header  py-3">
+            <a href="/admin/category/create" class=" btn btn-primary m-2 ">Create</a>
+        </div>
+        <div class="card-body table-bordered">
+            <div class="table-responsive">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr >
+                            <th>#</th>
+                            <th>Category Name</th>
+                            <th></th>
+                          
+
+
+                        </tr>
+                    </thead>
+                 
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td class=" color-red">@item.CategoryName</td>
+                                <td><a href="/admin/Category/UpData/@item.Id" class="btn btn-warning  m-1">Edit</a> 
+                                <a href="/admin/Category/delete/@item.Id" class="btn btn-danger  m-1">Delete</a>
+                                <a href="/admin/Category/detail/@item.Id" class="btn btn-info  m-1">Detail</a></td>
+                              
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart End -->

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Article>
+
+@section Link{
+    <link href="~/admin/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+
+
+    <a href="/admin/article/create/" class="btn btn-info w-100 mb-3">Create</a>
+<table id="dataTable" class="table table-bordered " width="100%" cellspacing="0">
+          <thead>
+               <tr><th>#</th>
+                   <th>Image</th>
+                   <th>Crated By</th>
+                   <th>Title</th>
+                   <th>View Count</th>
+                   <th>Caregory</th>
+                   <th>Tags</th>
+                   <td>Crated Data</td>
+                   <th>#</th>
+               </tr>
+         </thead>
+                <tbody>
+                    @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+               
+              
+            <td><img src="@item.PhotoUrl" class="w-100"/></td>
+                <td>@item.User.Firstname</td>
+                <td>@item.Title</td>
+                <td>@item.ViewCount</td>
+               
+                <td>@item.Category.CategoryName</td>
+                <td>
+                    @foreach (var tag in item.ArticleTag)
+                    {
+                        <span class="btn btn-info  m-2 " style=" border-radius:30px;">@tag.Tag.TagName</span>
+                    }
+                </td>
+                <td>@item.CreateData.ToString("dd/MMMM/yyyy")</td>
+                <td>
+                    <a href="/admin/article/Edit/@item.Id" class="btn btn-warning m-1 w-100">Edit</a>
+                    <form method="post" asp-action="Delete" asp-route-id ="@item.Id">
+
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete: @item.Title')" class="btn btn-danger m-1 w-100">Delete</button>
+                    </form>
+                    <a href="/admin/tag/detail/@item.Id" class="btn btn-info m-1 w-100">Detail</a>
+
+                </td>
+
+
+            </tr>
+        }
+                </tbody>
+
+    </table>
+            
+@section Scripts{
+    <!-- Page level plugins -->
+    <script src="~/admin/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+
+    </script>
+                }

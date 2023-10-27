@@ -1,0 +1,48 @@
+﻿@model ArticleSab
+<form method="post" enctype="multipart/form-data" class="m-3">
+    <div class="from-group" m-5>
+        <label asp-for="Title"></label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="from-group m-3 " >
+        <label asp-for="Content"></label>
+        <textarea id="editor" class="form-control form-select-sm" asp-for="Content" style="border-radius:50px; " style="border-radius:20px;"></textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+    <div class="from-group d-flex justify-content-around align-items-center m-3">
+        <div class="from-group w-100 mt-2">
+            <div class="from-group w-100 ">
+                <label>photo</label>
+                <input type="file" name="Photo" class="form-control bg-dark" />
+            </div>
+
+            <div class="from-group w-100 mt-1 mb-2">
+                <select asp-for="CategoryId" class="form-select form-select-sm mt-3 color-red" asp-items="@ViewBag.Categories"> </select>
+
+            </div>
+        </div>
+        <div class="from-group w-100">
+            <select name="tagIds" multiple class="form-select form-select-sm mb-3 m-2 mt-5">
+                @foreach (var item in ViewData["Tags"] as List<Tag>)
+                {
+                    <option value="@item.Id">@item.TagName</option>
+                }
+
+            </select>
+
+        </div>
+    </div>
+
+
+    <input type="submit" value="Create" class="btn btn-info w-100" />
+
+
+</form>
+
+@section Scripts{
+    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
+  }

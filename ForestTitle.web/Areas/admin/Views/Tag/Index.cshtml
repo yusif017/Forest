@@ -1,0 +1,39 @@
+﻿@model List<Tag>
+<a href="/admin/tag/create" class="btn btn-info w-100">Create</a>
+<table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tag Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td><i class="fa-solid fa-hashtag"></i>  @item.TagName</td>
+                
+
+
+
+
+
+                <td>
+                    <a href="/admin/tag/UpData/@item.Id" class="btn btn-success  m-1">Edit</a>
+                    <a href="/admin/tag/Delete/@item.Id" class="btn btn-danger  m-1">Delete</a>
+                    <a href="/admin/tag/detail/@item.Id" class="btn btn-info  m-1">Detail</a>
+                </td>
+
+              
+
+
+            </tr>
+            
+        }
+
+
+
+    </tbody>
+</table>

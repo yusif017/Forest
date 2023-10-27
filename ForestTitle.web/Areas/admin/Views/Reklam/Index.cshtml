@@ -1,0 +1,51 @@
+﻿
+@model IEnumerable<Reklam>
+
+<div class="table table-bordered">
+    <div class=" table-bordered mb-4">
+        <div class="card-header table-bordered py-3">
+            <a href="/admin/reklam/create" class=" btn btn-primary m-2 ">Create</a>
+        </div>
+        <div class="card-body table-bordered">
+            <div class="table-responsive">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr >
+                            <th>#</th>
+                            <th>Reklam Name</th>
+                            <th></th>
+                            <th></th>
+
+                          
+
+
+                        </tr>
+                    </thead>
+                 
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            
+                            
+                            <tr>
+                                <td>@item.Id</td>
+                               <td>
+                                    <img src="@item.ReklamName" />
+                               </td>
+                                <td>
+                                    <a href="/admin/Reklam/UpData/@item.Id" class="btn btn-warning  m-1">Edit</a>
+                                    <a href="/admin/Reklam/delete/@item.Id" class="btn btn-danger  m-1">Delete</a>
+                                    <a href="/admin/Reklam/detail/@item.Id" class="btn btn-info  m-1">Detail</a>
+                                </td>
+
+                            </tr>
+                          
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- DataTales Example -->﻿
+<!-- Chart Start -->

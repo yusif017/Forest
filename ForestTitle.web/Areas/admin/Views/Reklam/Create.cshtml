@@ -1,0 +1,19 @@
+﻿@model Reklam
+@if (ViewBag.Error != null)
+{
+    <p class="alert alert-danger">@ViewBag.Error</p>
+}
+<div class="col-lg-6 m-auto">
+    <div class=" btn-dark p-3 m-5">
+        <form asp-action="Create" asp-controller="Reklam" method="post">
+            <div class="form-group">
+                <label asp-for="ReklamName">Category name</label>
+                <input class="form-control" type="text" asp-for="ReklamName" style="background-color:aliceblue" />
+                <span asp-validation-for="ReklamName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary m-2 btn-sm m-1 " type="submit" value="Create" />
+            </div>
+        </form>
+    </div>
+</div>

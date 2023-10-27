@@ -1,0 +1,54 @@
+﻿@model User
+@inject Microsoft.AspNetCore.Identity.UserManager<User> userManager
+
+<table class="table  table-bordered " id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+
+            <th>Firstname</th>
+            <th>Lastnam</th>
+            <th>Email</th>
+
+
+        </tr>
+        <tr>
+
+            <td>@Model.Firstname</td>
+            <td> @Model.Lastname</td>
+            <td>@Model.Email</td>
+
+        </tr>
+
+    </thead>
+</table>
+<table class="table  table-bordered " id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+
+            <th>Role</th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in await userManager.GetRolesAsync(Model))
+        {
+            <tr>
+
+                @if (item != "Admin")
+                {
+                    <td>@item</td>
+                    <td>
+
+                        <a asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-userid="@Model.Id" asp-route-Role="@item" class="btn  btn-info">Delete Role</a>
+                    </td>
+                }
+
+            </tr>
+
+        }
+    </tbody>
+
+</table>

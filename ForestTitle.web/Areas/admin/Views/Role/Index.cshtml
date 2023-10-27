@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+<a href="/admin/role/create" class="btn btn-info w-100 mb-2">Create</a>
+<table class="table table-bordered  " id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+
+            <th>Role</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+
+            <tr>
+
+
+                @if (item.Name == "Admin")
+                {
+                    break;
+                }
+                else
+                {
+                    <td>@item.Name</td>
+
+                }
+
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+

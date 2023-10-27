@@ -1,0 +1,49 @@
+﻿@model Tag
+@{
+    if(ViewBag.Errors != null)
+    {
+        <h1 class="text-danger">@ViewBag.Errors</h1>
+    }
+}
+<form method="post">
+
+    <table class=" table table-bordered " id="dataTable" width="100%" cellspacing="0" >
+        <thead>
+            <tr>
+                <th>geri</th>
+                <th>yeni ad</th>
+                <th>#</th>
+                <th>UpData Ed</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>  <a href="/admin/tag" class="btn btn-facebook w-100">back</a></td>
+                <td>
+                    <label asp-for="@Model.TagName">Tag Name</label>
+
+                </td>
+                <td>
+                    <input type="text" asp-for="@Model.TagName" name="tagName" value="@Model.TagName" class="form-control w-100" />
+                    <span asp-validation-for="TagName" class="text-danger"></span>
+                </td>
+                <td>
+                    <input type="submit" value="UpData" class="btn btn-success w-100" />
+
+                </td>
+
+
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+ 
+</form>
+
+

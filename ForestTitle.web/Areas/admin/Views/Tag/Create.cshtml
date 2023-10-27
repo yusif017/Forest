@@ -1,0 +1,41 @@
+﻿@model Tag 
+
+<form method="post">
+   
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+        <thead>
+            <tr>
+
+                <th>Tag Name</th>
+                <th>#</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                   
+                    <p class="d-flex align-items-center justify-content-between">
+                        <label asp-for="@Model.TagName" ></label>
+                        <input type="text" asp-for="@Model.TagName" class=" w-75 form-control " />
+
+                    </p>
+                  
+               
+                   <span asp-validation-for="TagName" class="text-danger"></span>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </td>
+                <td><input type="submit" value="Create" class="btn btn-success w-100 mb-3" /></td>
+
+            </tr>
+        </tbody>
+    </table>
+  
+   
+</form>
+
+
+
+
+
+
